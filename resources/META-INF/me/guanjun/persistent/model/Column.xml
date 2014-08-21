@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Column">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="column" type="me.guanjun.persistent.model.Column"/>
+    <resultMap class="column" id="objMap">
+        <result property="colid"/>
+        <result property="colname"/>
+        <result property="description"/>
+        <result property="seo"/>
+        <result property="ord" column="ord"/>
+        <result property="pcolid"/>
+    </resultMap>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select * from me_column
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="colname">
+                colname like #colname#
+            </isNotEmpty>
+        </dynamic>
+        order by colid
+    </select>
+    <select id="queryObj" parameterClass="map" resultClass="column">
+        select * from me_column where colid = #colid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(colid) from me_column
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="colname">
+                colname like #colname#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(colid) from me_column where colid=#colid#
+    </select>
+    <insert id="execInsert" parameterClass="column">
+        insert into me_column(colid,colname,description,seo,ord,pcolid)
+        values(#colid#,#colname#,#description#,#seo#,#ord#,#pcolid#)
+    </insert>
+    <update id="execUpdate" parameterClass="column">
+        update me_column set
+        colname=#colname#,
+        description=#description#,
+        seo=#seo#,
+        ord=#ord#,
+        pcolid=#pcolid#
+        where colid=#colid#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_column where colid=#value#
+    </delete>
+</sqlMap>

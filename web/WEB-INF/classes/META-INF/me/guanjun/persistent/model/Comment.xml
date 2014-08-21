@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Comment">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="comment" type="me.guanjun.persistent.model.Comment"/>
+    <resultMap class="comment" id="objMap">
+        <result property="cid"/>
+        <result property="arcid"/>
+        <result property="writer"/>
+        <result property="ip"/>
+        <result property="content" column="content"/>
+        <result property="createtime"/>
+        <result property="email"/>
+        <result property="pcid"/>
+    </resultMap>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select * from me_comment
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="cid">
+                cid = #cid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="arcid">
+                arcid = #arcid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="writer">
+                writer like #writer#
+            </isNotEmpty>
+        </dynamic>
+        order by cid desc
+    </select>
+    <select id="queryObj" parameterClass="map" resultMap="objMap">
+        select * from me_comment where cid = #cid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(cid) from me_comment
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="cid">
+                cid = #cid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="arcid">
+                arcid = #arcid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="writer">
+                writer like #writer#
+            </isNotEmpty>
+        </dynamic>
+
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(cid) from me_comment where cid=#cid#
+    </select>
+    <insert id="execInsert" parameterClass="comment">
+        insert into me_comment(cid,arcid,writer,ip,content,createtime,email,pcid)
+        values(#cid#,#arcid#,#writer#,#ip#,#content#,#createtime#,#email#,#pcid#)
+    </insert>
+    <update id="execUpdate" parameterClass="comment">
+        update me_comment set
+        arcid=#arcid#,
+        writer=#writer#,
+        ip=#ip#,
+        content=#content#,
+        createtime=#createtime#,
+        email=#email#,
+        pcid=#pcid#
+        where cid=#cid#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_comment where cid=#value#
+    </delete>
+    <delete id="execDeleteForArticle" parameterClass="string">
+        delete from me_comment where arcid=#value#
+    </delete>
+</sqlMap>

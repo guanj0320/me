@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[framework] %d - %c -%-4r [%t] %-5p %c %x - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="DEBUG" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="D://logs//app-debug.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="500KB"/>
+        <param name="MaxBackupIndex" value="2"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG" />
+            <param name="LevelMax" value="DEBUG" />
+        </filter>
+    </appender>
+
+    <appender name="INFO" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="D://logs//app-info.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="500KB"/>
+        <param name="MaxBackupIndex" value="2"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO" />
+            <param name="LevelMax" value="INFO" />
+        </filter>
+    </appender>
+
+    <appender name="WARN" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="D://logs//app-warn.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="500KB"/>
+        <param name="MaxBackupIndex" value="2"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN" />
+            <param name="LevelMax" value="WARN" />
+        </filter>
+    </appender>
+
+    <appender name="ERROR" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="D://logs//app-error.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="500KB"/>
+        <param name="MaxBackupIndex" value="2"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR" />
+            <param name="LevelMax" value="ERROR" />
+        </filter>
+    </appender>
+
+    <!-- 指定订阅类生效的日志配置 -->
+    <category name="me.guanjun.web.controller.HomeController">
+        <priority value="info" /><!-- 响应级别 -->
+        <appender-ref ref="stdout"/><!-- 使用哪个发生器 -->
+    </category>
+
+    <root>
+        <priority value="info"/>
+        <appender-ref ref="stdout"/>
+
+    </root>
+
+</log4j:configuration>

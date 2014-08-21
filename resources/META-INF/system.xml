@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+	<params>
+		<excel.maxRowPerSheet>5000</excel.maxRowPerSheet>
+		<app_name><![CDATA[Redis Test]]></app_name>
+		<app_version><![CDATA[Version 1.0.0 build by 2014.04.17]]></app_version>
+		<plat_version><![CDATA[5.0.1]]></plat_version>
+		<app_copyright><![CDATA[Copyright 2014 platform版权所有]]></app_copyright>
+		<init_pwd><![CDATA[123456]]></init_pwd>
+		<telephone>12345678</telephone>
+		<tech_support>87654321</tech_support>
+		
+		<!-- 系统管理员账号 -->
+		<admin>admin</admin>
+        <!-- 系统管理员密码 -->
+        <password>1</password>
+		<!-- 系统管理员可使用的菜单权限，不管此管理员有无此权限，都可以显示此菜单
+			可以设置多个权限，用逗号隔开，SystemConfig.MENU的值不变，
+			还是下面设置的值，如果在系统中使用到，
+			请自己使用split方法把多个权限生成为权限数组
+		 -->
+		<menu>KDF.SYS.RESOURCE</menu>
+		
+		<!-- 是否启用验证码 1:启用；0:不启用 -->
+		<is_startup_validate>0</is_startup_validate>
+		
+		<!-- 目标编码 -->
+		<encoding>UTF-8</encoding>
+		<!-- 容器编码 -->
+		<container_encoding>UTF-8</container_encoding>
+		
+		<!-- 系统使用的数据库，是为了解决在使用Oracle数据库时，返回的map的key都为大写，在程序中做处理 -->
+		<database>mysql</database>
+		
+		<!-- 全文检索时，文档存放的位置，WebRoot的相对位置 -->
+		<doc_search_path>doc_search</doc_search_path>
+		
+		<!-- 全文检索时，索引存放的位置，WebRoot的相对位置 -->
+		<doc_index_path>doc_index</doc_index_path>
+		
+		<!-- 是否使用CAS的SSO 1:启用；0:不启用 -->
+		<is_startup_cas>0</is_startup_cas>
+		<!-- CAS登出地址 -->
+		<cas_logout_url>http://127.0.0.1:8081/sso/logout</cas_logout_url>
+		
+		<!-- 居右菜单 -->
+		<rightmenu>
+		<![CDATA[
+		<?xml version="1.0" encoding="UTF-8"?>
+		<Root>
+		  <我的信息 id="mymsg" istop="0" restype="url" url="#" target="_self"/>
+		  <数据监控 id="monitor" istop="0" restype="url" url="/nose/druid/index.html" target="_blank"/>
+		  <关于我们 id="aboutus" istop="0" restype="modal" url="#myModal" target="_self"/>
+		  <退出 id="logout" istop="0" restype="script" url="javascript:logout();" target="_self"/>
+		</Root>
+		]]>
+		</rightmenu>
+
+        <!-- 首页上的三个小banner内容 -->
+        <s_banner1>
+            <![CDATA[
+                2000年，鬼使神差地报了个班学吉他，一下子就爱上这个人人都容易学会的乐器。
+                接下来的日子认识了一些同样有爱好的朋友，喜欢上了金属乐，一直都钟爱Metallica。<br/>
+                学了一段时间就开始买电吉他、效果器、音箱......<br/>
+                现在也老大不小了，还依然对吉他的声音情有独钟，没事就喜欢在家，开大音量，弹着我喜欢的金属乐。<br/>
+                特别是心情不好，压力大的时候，发现这真是个非常好的减压方式。因为这样就可以什么都不想，让自己专注于弹奏吉他上，效果很不错哦。
+            ]]>
+        </s_banner1>
+        <s_banner2>
+            <![CDATA[
+                看到一个关于摄影的说法，摄影师其实都是可以成为画家的，只是现在他们用镜头去作画。<br/>
+                小时候拿着家里的理光相机拍，胶片太贵了，不能随便拍。后来上大学时拥有了一台Nikon 5700，可以随便按下快门记录更多的片段。<br/>
+                直到现在，总算有了台单反相机，拍风景、拍美食、拍女儿......记录着生活的点点滴滴。<br/>
+                我是IT人，我不是摄影师，我只是用自己的眼睛（镜头）来看这个不寻常的世界。
+                我喜欢一切美好的事物，我用它向世界展示我的看法，我自己对美丽的概念和自己感兴趣的事情。
+            ]]>
+        </s_banner2>
+        <s_banner3>
+            <![CDATA[
+                作为一个中国人，应该感觉自己很有口福，相比全球各国，中国人应该算是最会吃的一个。<br/>
+                我是一个80后，从小都是到吃饭的时间就有可口美味饭菜。上学的时候只会做个蛋炒饭，这样至少不会让自己饿着:)<br/>
+                直到有了自己的小美女，自己开始尝试着做些饭菜。看着别人享用着我做的美食，心里是很有满足感哦。<br/>
+                花式咖啡、烘焙、西餐牛排、中式美食，样样我都要来一点，呵呵。
+                只要我有空，心情好的时候就会露一手，所以现在我有个新的外号叫 管小厨 :) 看来如果不搞IT了，以后可以开个美食店了。
+            ]]>
+        </s_banner3>
+	</params>
+</system>

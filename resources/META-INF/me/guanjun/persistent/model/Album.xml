@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Album">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="album" type="me.guanjun.persistent.model.Album"/>
+    <resultMap class="album" id="objMap">
+        <result property="aid"/>
+        <result property="username"/>
+        <result property="albumname"/>
+        <result property="pic"/>
+        <result property="createtime"/>
+    </resultMap>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select t.aid,t.username,t.albumname,t.pic,t.createtime from me_album t
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="username">
+                t.username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="albumname">
+                t.albumname like #albumname#
+            </isNotEmpty>
+        </dynamic>
+        order by t.aid desc
+    </select>
+    <select id="queryObj" parameterClass="map" resultClass="album">
+        select * from me_album where aid = #aid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(aid) from me_album
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="username">
+                username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="albumname">
+                albumname like #albumname#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(aid) from me_album where aid=#aid#
+    </select>
+    <insert id="execInsert" parameterClass="album">
+        insert into me_album(aid,username,albumname,pic,createtime)
+        values(#aid#,#username#,#albumname#,#pic#,#createtime#)
+    </insert>
+    <update id="execUpdate" parameterClass="album">
+        update me_album set
+        username=#username#,
+        albumname=#albumname#,
+        pic=#pic#,
+        createtime=#createtime#
+        where aid=#aid#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_album where aid=#value#
+    </delete>
+</sqlMap>

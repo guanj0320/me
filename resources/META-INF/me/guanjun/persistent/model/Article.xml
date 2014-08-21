@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Article">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="article" type="me.guanjun.persistent.model.Article"/>
+    <resultMap class="article" id="objMap">
+        <result property="arcid"/>
+        <result property="colid"/>
+        <result property="tid"/>
+        <result property="username"/>
+        <result property="property" column="property"/>
+        <result property="description"/>
+        <result property="pic"/>
+        <result property="createtime"/>
+        <result property="clicl"/>
+        <result property="title"/>
+        <result property="colname" column="colname"/>
+        <result property="nickname" column="nickname"/>
+    </resultMap>
+    <resultMap id="objMapForHome" class="article">
+        <result property="arcid"/>
+        <result property="title"/>
+        <result property="property"/>
+        <result property="description"/>
+        <result property="pic"/>
+        <result property="createtime"/>
+    </resultMap>
+    <select id="queryArticlesForHome" parameterClass="map" resultMap="objMapForHome">
+        select arcid,title,property,description,pic,createtime from me_article
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="username">
+                username = #username#
+            </isNotEmpty>
+        </dynamic>
+        order by arcid desc
+    </select>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select t1.arcid,t1.colid,t1.tid,t1.username,t1.property,t1.description,t1.pic,t1.createtime,t1.clicl,t1.title,t2.colname,t3.nickname
+        from me_article t1, me_column t2, me_user t3
+        where t1.colid = t2.colid and t1.username = t3.username
+        <dynamic prepend="and">
+            <isNotEmpty prepend="and" property="title">
+                t1.title like #title#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="colid">
+                t1.colid = #colid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="property">
+                t1.property in ($property$)
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="username">
+                t1.username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="tid">
+                t1.tid like #tid#
+            </isNotEmpty>
+        </dynamic>
+        order by arcid desc
+    </select>
+    <select id="queryObj" parameterClass="map" resultClass="article">
+        select * from me_article where arcid = #arcid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(arcid)
+        from me_article t1, me_column t2, me_user t3
+        where t1.colid = t2.colid and t1.username = t3.username
+        <dynamic prepend="and">
+            <isNotEmpty prepend="and" property="title">
+                t1.title like #title#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="colid">
+                t1.colid = #colid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="property">
+                t1.property in ($property$)
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="username">
+                t1.username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="tid">
+                t1.tid like #tid#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(arcid) from me_article where arcid=#arcid#
+    </select>
+    <insert id="execInsert" parameterClass="article">
+        insert into me_article(arcid,colid,tid,username,property,pic,description,content,createtime,updatetime,clicl,source,ord,title)
+        values(#arcid#,#colid#,#tid#,#username#,#property#,#pic#,#description#,#content#,date_format(#createtime#,'%Y-%m-%d %H:%i:%s'),#updatetime#,#clicl#,#source#,#ord#,#title#)
+    </insert>
+    <update id="execUpdate" parameterClass="article">
+        update me_article set
+        colid=#colid#,
+        tid=#tid#,
+        username=#username#,
+        property=#property#,
+        pic=#pic#,
+        description=#description#,
+        content=#content#,
+        createtime=#createtime#,
+        updatetime=#updatetime#,
+        clicl=#clicl#,
+        source=#source#,
+        ord=#ord#,
+        title=#title#
+        where arcid=#arcid#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_article where arcid=#value#
+    </delete>
+</sqlMap>

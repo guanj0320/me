@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings useStatementNamespaces="true"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Article.xml"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Banner.xml"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Column.xml"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Comment.xml"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Feedback.xml"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Tag.xml"/>
+	<sqlMap resource="META-INF/me/guanjun/persistent/model/User.xml"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Album.xml"/>
+    <sqlMap resource="META-INF/me/guanjun/persistent/model/Photo.xml"/>
+</sqlMapConfig>

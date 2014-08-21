@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Banner">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="banner" type="me.guanjun.persistent.model.Banner"/>
+    <resultMap class="banner" id="objMap">
+        <result property="bid"/>
+        <result property="title"/>
+        <result property="content"/>
+        <result property="pic"/>
+        <result property="ord" column="ord"/>
+        <result property="createtime"/>
+        <result property="updatetime"/>
+    </resultMap>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select * from me_banner
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="title">
+                title like #title#
+            </isNotEmpty>
+        </dynamic>
+        order by bid desc
+    </select>
+    <select id="queryObj" parameterClass="map" resultClass="banner">
+        select * from me_banner where bid = #bid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(bid) from me_banner
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="title">
+                title like #title#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(bid) from me_banner where bid=#bid#
+    </select>
+    <insert id="execInsert" parameterClass="banner">
+        insert into me_banner(bid,title,content,pic,ord,createtime,updatetime)
+        values(#bid#,#title#,#content#,#pic#,#ord#,#createtime#,#updatetime#)
+    </insert>
+    <update id="execUpdate" parameterClass="banner">
+        update me_banner set
+        title=#title#,
+        content=#content#,
+        pic=#pic#,
+        ord=#ord#,
+        createtime=#createtime#,
+        updatetime=#updatetime#
+        where bid=#bid#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_banner where bid=#value#
+    </delete>
+</sqlMap>

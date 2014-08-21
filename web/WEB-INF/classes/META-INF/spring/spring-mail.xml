@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                     http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+    <!-- 处理mail.properties中的密码 -->
+    <bean id="mailUtil" class="pf.ee.mail.MailUtil">
+        <property name="password" value="${mail.password}"/>
+    </bean>
+    <!-- 邮件发送器 163 -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.host}" />
+        <property name="username" value="${mail.username}" />
+        <property name="password">
+            <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                <property name="targetObject">
+                    <ref local="mailUtil"/>
+                </property>
+                <property name="targetMethod">
+                    <value>getRealPassword</value>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--  邮件发送器 gmail
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="${mail.host}" />
+        <property name="username" value="${mail.username}" />
+        <property name="password" value="${mail.password}" />
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+                <prop key="mail.smtp.port">465</prop>
+                <prop key="mail.smtp.socketFactory.port">465</prop>
+                <prop key="mail.smtp.socketFactory.fallback">false</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+            </props>
+        </property>
+	</bean>
+	-->
+
+
+
+    <!-- freemarker config -->
+    <bean id="mailTemplateEngine" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="classpath:META-INF/mail/"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="locale">zh_CN</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="mailService" class="pf.ee.mail.DefaultMailService">
+        <property name="mailSender" ref="mailSender"></property>
+        <property name="mailTemplateEngine" ref="mailTemplateEngine"></property>
+    </bean>
+    <!-- Mock的Mail Service,仅把信件内容打印到屏幕
+    <bean id="mailService" class="pf.ee.mail.MockMailService">
+        <property name="mailTemplateEngine" ref="mailTemplateEngine"></property>
+    </bean>
+    -->
+</beans>

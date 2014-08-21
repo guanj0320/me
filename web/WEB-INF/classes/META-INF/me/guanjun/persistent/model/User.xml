@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="User">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="user" type="me.guanjun.persistent.model.User"/>
+    <resultMap class="user" id="objMap">
+        <result property="uid"/>
+        <result property="username"/>
+        <result property="pwd"/>
+        <result property="nickname"/>
+        <result property="bindaccount" column="bindaccount"/>
+        <result property="logintime"/>
+        <result property="loginip"/>
+        <result property="createtime"/>
+        <result property="updatetime"/>
+        <result property="email"/>
+    </resultMap>
+    <select id="queryObjs" resultMap="objMap">
+        select * from me_user order by uid
+    </select>
+    <select id="queryObj" parameterClass="map" resultMap="objMap">
+        select * from me_user where username = #username#
+    </select>
+    <select id="queryCountObjs" resultClass="int">
+        select count(username) from me_user
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(username) from me_user where username=#username#
+    </select>
+    <insert id="execInsert" parameterClass="user">
+        insert into me_user(uid,username,pwd,nickname,bindaccount,logintime,loginip,createtime,updatetime,email)
+        values(#uid#,#username#,#pwd#,#nickname#,#bindaccount#,#logintime#,#loginip#,#createtime#,#updatetime#,#email#)
+    </insert>
+    <update id="execUpdate" parameterClass="user">
+        update me_user set
+        uid=#uid#,
+        pwd=#pwd#,
+        nickname=#nickname#,
+        bindaccount=#bindaccount#,
+        logintime=#logintime#,
+        loginip=#loginip#,
+        createtime=#createtime#,
+        updatetime=#updatetime#,
+        email=#email#
+        where username=#username#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_user where username=#value#
+    </delete>
+</sqlMap>

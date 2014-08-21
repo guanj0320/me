@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Tag">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="tag" type="me.guanjun.persistent.model.Tag"/>
+    <resultMap class="tag" id="objMap">
+        <result property="tid"/>
+        <result property="tagname"/>
+        <result property="num"/>
+        <result property="createtime"/>
+    </resultMap>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select * from me_tag
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="tagname">
+                tagname like #tagname#
+            </isNotEmpty>
+        </dynamic>
+        order by tid
+    </select>
+    <select id="queryObj" parameterClass="map" resultClass="tag">
+        select * from me_tag where tid = #tid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(tid) from me_tag
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="tagname">
+                tagname like #tagname#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(tid) from me_tag where tid=#tid#
+    </select>
+    <insert id="execInsert" parameterClass="tag">
+        insert into me_tag(tid,tagname,num,createtime)
+        values(#tid#,#tagname#,#num#,#createtime#)
+    </insert>
+    <update id="execUpdate" parameterClass="tag">
+        update me_tag set
+        tagname=#tagname#,
+        num=#num#,
+        createtime=#createtime#
+        where tid=#tid#
+    </update>
+    <delete id="execDelete" parameterClass="String">
+        delete from me_tag where tid=#value#
+    </delete>
+</sqlMap>

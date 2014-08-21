@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Feedback">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="feedback" type="me.guanjun.persistent.model.Feedback"/>
+    <resultMap class="feedback" id="objMap">
+        <result property="fid"/>
+        <result property="username"/>
+        <result property="writer"/>
+        <result property="ip"/>
+        <result property="createtime"/>
+        <result property="email"/>
+        <result property="pfid"/>
+        <result property="isreply"/>
+        <result property="replytime"/>
+    </resultMap>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select t.fid,t.username,t.writer,t.ip,t.createtime,t.email,t.pfid,t.isreply,t.replytime from me_feedback t
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="username">
+                username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="isreply">
+                isreply in ($isreply$)
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="writer">
+                writer like #writer#
+            </isNotEmpty>
+        </dynamic>
+        order by fid desc
+    </select>
+    <select id="queryObj" parameterClass="map" resultClass="feedback">
+        select * from me_feedback where fid = #fid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(fid) from me_feedback
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="username">
+                username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="isreply">
+                isreply in ($isreply$)
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="writer">
+                writer like #writer#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(fid) from me_feedback where fid=#fid#
+    </select>
+    <insert id="execInsert" parameterClass="feedback">
+        insert into me_feedback(fid,username,writer,ip,content,createtime,email,pfid,isreply,replytime,replycontent)
+        values(#fid#,#username#,#writer#,#ip#,#content#,#createtime#,#email#,#pfid#,#isreply#,#replytime#,#replycontent#)
+    </insert>
+    <update id="execUpdate" parameterClass="feedback">
+        update me_feedback set
+        username=#username#,
+        writer=#writer#,
+        ip=#ip#,
+        content=#content#,
+        createtime=#createtime#,
+        email=#email#,
+        pfid=#pfid#,
+        isreply=#isreply#,
+        replytime=#replytime#,
+        replycontent=#replycontent#
+        where fid=#fid#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_feedback where fid=#value#
+    </delete>
+</sqlMap>

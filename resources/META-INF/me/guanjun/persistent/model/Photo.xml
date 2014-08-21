@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Photo">
+    <typeAlias alias="list" type="java.util.List"/>
+    <typeAlias alias="string" type="java.lang.String"/>
+    <typeAlias alias="integer" type="java.lang.Integer"/>
+    <typeAlias alias="map" type="java.util.Map"/>
+    <typeAlias alias="photo" type="me.guanjun.persistent.model.Photo"/>
+    <resultMap class="photo" id="objMap">
+        <result property="pid"/>
+        <result property="aid"/>
+        <result property="username"/>
+        <result property="title"/>
+        <result property="src"/>
+        <result property="pre"/>
+        <result property="width"/>
+        <result property="height"/>
+        <result property="createtime"/>
+    </resultMap>
+    <select id="queryObjs" parameterClass="map" resultMap="objMap">
+        select t.pid,t.aid,t.username,t.title,t.src,t.pre,t.width,t.height,t.createtime from me_photo t
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="username">
+                t.username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="aid">
+                t.aid = #aid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="title">
+                t.title like #title#
+            </isNotEmpty>
+        </dynamic>
+        order by t.pid desc
+    </select>
+    <select id="queryObj" parameterClass="map" resultClass="photo">
+        select * from me_photo where pid = #pid#
+    </select>
+    <select id="queryCountObjs" parameterClass="map" resultClass="int">
+        select count(pid) from me_photo
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="username">
+                username = #username#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="aid">
+                aid = #aid#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="title">
+                title like #title#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    <select id="queryCountObj" parameterClass="map" resultClass="int">
+        select count(pid) from me_photo where pid=#pid#
+    </select>
+    <insert id="execInsert" parameterClass="photo">
+        insert into me_photo(pid,aid,username,title,src,pre,width,height,createtime)
+        values(#pid#,#aid#,#username#,#title#,#src#,#pre#,#width#,#height#,#createtime#)
+    </insert>
+    <update id="execUpdate" parameterClass="photo">
+        update me_photo set
+        aid=#aid#,
+        username=#username#,
+        title=#title#,
+        src=#src#,
+        pre=#pre#,
+        width=#width#,
+        height=#height#,
+        createtime=#createtime#
+        where pid=#pid#
+    </update>
+    <delete id="execDelete" parameterClass="string">
+        delete from me_photo where pid=#value#
+    </delete>
+</sqlMap>
