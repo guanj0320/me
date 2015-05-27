@@ -20,8 +20,14 @@
          它会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,
            是spring MVC为@Controllers分发请求所必须的
      -->
-    <mvc:annotation-driven/>
-
+    <mvc:annotation-driven>
+        <!-- 消息转换器 -->
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <!-- 这里拦截器还有一种配置方法【针对路径进行配置】 推荐使用这个，方便直观-->
     <mvc:interceptors>
         <mvc:interceptor>
