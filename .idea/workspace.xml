@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b58cbfbb-dda2-402f-bc19-d7e55b82e6bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/gson-2.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/httpclient-4.1.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/httpcore-4.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/json-lib-2.1-jdk15.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/org.apache.felix.webconsole-1.0.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/AccessToken.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/message/resp/Article.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/message/resp/BaseMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/util/Constants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/service/CoreService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/robot/FormatXmlProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/service/MenuClickService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/autoReply/MessageResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/util/MessageUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/util/MyX509TrustManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/message/resp/NewsMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/util/PropertiesUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/util/SignUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/menu/TestMenu.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/message/resp/TextMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/robot/TulingApiProcess.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/entity/WeChat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/web/controller/WeixinController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/guanjun/weixin/util/WeixinUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/META-INF/weixin/config.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/guanjun/web/controller/BlogController.java" afterPath="$PROJECT_DIR$/src/me/guanjun/web/controller/BlogController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/META-INF/datasource.properties" afterPath="$PROJECT_DIR$/resources/META-INF/datasource.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/META-INF/spring/me-servlet.xml" afterPath="$PROJECT_DIR$/resources/META-INF/spring/me-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/me.iml" afterPath="$PROJECT_DIR$/.idea/me.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="b58cbfbb-dda2-402f-bc19-d7e55b82e6bb" name="Default" comment="create me">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="me.iws" />
@@ -188,6 +157,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guanjun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guanjun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guanjun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="persistent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -199,7 +238,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="settings.github" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -543,12 +582,17 @@
       <workItem from="1422349215928" duration="1551000" />
       <workItem from="1429075564726" duration="2449000" />
       <workItem from="1429079273019" duration="4219000" />
-      <workItem from="1432702614090" duration="122000" />
+      <workItem from="1432702614090" duration="375000" />
     </task>
+    <task id="LOCAL-00001" summary="create me">
+      <created>1432702758024</created>
+      <updated>1432702758024</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17335000" />
+    <option name="totallyTimeSpent" value="17588000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="820" extended-state="6" />
@@ -569,6 +613,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -581,7 +626,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -597,9 +641,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="create me" />
+    <option name="LAST_COMMIT_MESSAGE" value="create me" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
